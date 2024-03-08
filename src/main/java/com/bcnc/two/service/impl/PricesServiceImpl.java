@@ -19,13 +19,12 @@ public class PricesServiceImpl implements PricesService {
     @Autowired
     private PricesRepository pricesRepository;
 
-
     @Override
     public Optional<Prices> findByValues(LocalDateTime dateOfApplication, int productId, int brandId) {
         Optional<Brand> optionalBrand = brandService.getBrandById(brandId);
         if(optionalBrand.isPresent()) {
             Specification<Prices> spec = PricesRepository.findByDateRangeAndBrandAndProduct(dateOfApplication, productId, brandId);
-            return pricesRepository.findOne(spec);
+            return pricesRepository.findAll(spec).stream().findFirst();
         }
         else{
             return Optional.empty();

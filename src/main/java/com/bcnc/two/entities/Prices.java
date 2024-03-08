@@ -10,14 +10,15 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name="PRICES")
+@Table(name="prices")
 public class Prices implements Serializable {
 
     @Id
     @Column(name = "ID")
     private int id;
-    @Column(name = "BRAND_ID")
-    private int brandId;
+    @ManyToOne
+    @JoinColumn(name = "brandId")
+    private Brand brand;
     @Column(name = "START_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime startDate;

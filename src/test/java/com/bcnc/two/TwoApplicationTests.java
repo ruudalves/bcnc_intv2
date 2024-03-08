@@ -18,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-
+/**
+ * This test class serves to test if some of the data elements are being correctly fetched from the database and they match manual calculations
+ * Also serves as full base unit test as only changes in terms of object creation of PriceDto type
+ */
 class TwoApplicationTests {
 
 	@Autowired

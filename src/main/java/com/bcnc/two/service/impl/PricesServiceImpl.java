@@ -33,13 +33,13 @@ public class PricesServiceImpl implements PricesService {
 
     @Override
 
-    public String getPetitionDescribed(LocalDateTime dateOfApplication, int productId, int brandId) {
+    public Optional<Prices> getPetitionDescribed(LocalDateTime dateOfApplication, int productId, int brandId) {
 
         Optional<Prices> prices = findByValues(dateOfApplication, productId, brandId);
         if (prices.isEmpty()) {
-            return "";
+            return Optional.empty();
         } else {
-           return prices.get().getPrice().toString();
+           return prices;
         }
 
     }

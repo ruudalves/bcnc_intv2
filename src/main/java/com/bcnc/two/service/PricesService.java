@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface PricesService {
 
     Optional<Prices> findByValues(LocalDateTime dateOfApplication, int productId, int brandId);
-    String getPetitionDescribed(LocalDateTime dateOfApplication, int productId, int brandId) throws NullPointerException;
+    Optional<Prices> getPetitionDescribed(LocalDateTime dateOfApplication, int productId, int brandId) throws NullPointerException;
 }

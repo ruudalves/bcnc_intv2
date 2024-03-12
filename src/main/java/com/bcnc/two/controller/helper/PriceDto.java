@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 @Getter
@@ -27,4 +28,14 @@ public class PriceDto {
         dto.setProductId(price.getProductId());
         return dto;
     }
+
+    public boolean isEquals(Prices price) {
+        return productId == price.getProductId()
+                && brandId == price.getBrand().getBrandId()
+                && priceList == price.getPriceList()
+                && Objects.equals(startDate, price.getStartDate())
+                && Objects.equals(endDate, price.getEndDate())
+                && this.price.equals(price.getPrice().toString().concat(price.getCurrency()));
+    }
+
 }

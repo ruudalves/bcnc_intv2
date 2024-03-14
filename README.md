@@ -15,7 +15,7 @@ Last the infrastructure layer, as it is the layer that contains the logic needed
 * Using Spring JPA (Hibernate embedded)
 
 For many reasons, but the main one is to prevent using standard hardcoded queries, if case of breach, SQL injecting is much easier.
-Also allows to abstract further from the infrastructure.
+Also allows to abstract further from the infrastructure and domain.
 
 # Local
 

@@ -1,6 +1,6 @@
-package com.bcnc.two.service;
+package com.bcnc.two.domain.service;
 
-import com.bcnc.two.entities.Brand;
+import com.bcnc.two.domain.Brand;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

@@ -1,5 +1,6 @@
-package com.bcnc.two.controller.helper;
+package com.bcnc.two.application.rest.controller.helper;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +9,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class PriceCheckerDto {
-
+    @NotNull
     private LocalDateTime date;
-
+    @NotNull
     private int productId;
-
+    @NotNull
     private int brandId;
 
 }

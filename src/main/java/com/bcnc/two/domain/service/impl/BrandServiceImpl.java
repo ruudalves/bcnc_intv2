@@ -1,9 +1,8 @@
-package com.bcnc.two.service.impl;
+package com.bcnc.two.domain.service.impl;
 
-import com.bcnc.two.repository.BrandRepository;
-import com.bcnc.two.service.BrandService;
-import com.bcnc.two.entities.Brand;
-import lombok.AllArgsConstructor;
+import com.bcnc.two.domain.repository.BrandRepository;
+import com.bcnc.two.domain.service.BrandService;
+import com.bcnc.two.domain.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

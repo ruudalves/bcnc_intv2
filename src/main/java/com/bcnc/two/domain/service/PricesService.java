@@ -1,6 +1,6 @@
-package com.bcnc.two.service;
+package com.bcnc.two.domain.service;
 
-import com.bcnc.two.entities.Prices;
+import com.bcnc.two.domain.Prices;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface PricesService {
 
     Optional<Prices> findByValues(LocalDateTime dateOfApplication, int productId, int brandId);
-    Optional<Prices> getPetitionDescribed(LocalDateTime dateOfApplication, int productId, int brandId) throws NullPointerException;
 }

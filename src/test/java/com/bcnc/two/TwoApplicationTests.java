@@ -1,10 +1,11 @@
 package com.bcnc.two;
 
-import com.bcnc.two.controller.PricesController;
-import com.bcnc.two.controller.helper.PriceCheckerDto;
-import com.bcnc.two.controller.helper.PriceDto;
-import com.bcnc.two.entities.Brand;
-import com.bcnc.two.entities.Prices;
+import com.bcnc.two.application.rest.controller.PricesController;
+import com.bcnc.two.application.rest.controller.helper.PriceCheckerDto;
+import com.bcnc.two.application.rest.controller.helper.PriceDto;
+import com.bcnc.two.application.rest.request.GetPriceRequest;
+import com.bcnc.two.domain.Brand;
+import com.bcnc.two.domain.Prices;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -25,19 +26,18 @@ class TwoApplicationTests {
 	@Autowired
 	private PricesController pricesController;
 
-
-    private PriceCheckerDto setUp(String date){
-		PriceCheckerDto priceCheckerDto= new PriceCheckerDto();
+    private GetPriceRequest setUp(String date){
+		PriceCheckerDto priceCheckerDto = new PriceCheckerDto();
 		priceCheckerDto.setBrandId(1);
 		priceCheckerDto.setProductId(35455);
 		priceCheckerDto.setDate(LocalDateTime.parse(date));
-		return priceCheckerDto;
+		return new GetPriceRequest(priceCheckerDto);
 	}
 
     @Test
 	@Order(1)
 	void should_getPrice_at10amOn14() {
-		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-14T10:00:00"));
+		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-14T10:00:00")).getPriceDtoResponseEntity();
 		Prices mockPrice = new Prices();
 		Brand mockBrand = new Brand();
 		mockBrand.setBrandId(1);
@@ -58,7 +58,7 @@ class TwoApplicationTests {
 	@Test
 	@Order(2)
 	void should_getPrice_at16Of14(){
-		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-14T16:00:00"));
+		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-14T16:00:00")).getPriceDtoResponseEntity();
 		Prices mockPrice = new Prices();
 		Brand mockBrand = new Brand();
 		mockBrand.setBrandId(1);
@@ -79,7 +79,7 @@ class TwoApplicationTests {
 	@Test
 	@Order(3)
 	void should_getPrice_at21hOn14(){
-		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-14T21:00:00"));
+		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-14T21:00:00")).getPriceDtoResponseEntity();
 		Prices mockPrice = new Prices();
 		Brand mockBrand = new Brand();
 		mockBrand.setBrandId(1);
@@ -100,7 +100,7 @@ class TwoApplicationTests {
 	@Test
 	@Order(4)
 	void should_getPrice_at10hOn15(){
-		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-15T10:00:00"));
+		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-15T10:00:00")).getPriceDtoResponseEntity();
 		Prices mockPrice = new Prices();
 		Brand mockBrand = new Brand();
 		mockBrand.setBrandId(1);
@@ -121,7 +121,7 @@ class TwoApplicationTests {
 	@Test
 	@Order(5)
 	void should_getPrice_at21hOn16(){
-		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-16T21:00:00"));
+		ResponseEntity<PriceDto> response = pricesController.getPrice(setUp("2020-06-16T21:00:00")).getPriceDtoResponseEntity();
 		Prices mockPrice = new Prices();
 		Brand mockBrand = new Brand();
 		mockBrand.setBrandId(1);

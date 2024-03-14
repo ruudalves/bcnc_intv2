@@ -1,4 +1,4 @@
-package com.bcnc.two.entities;
+package com.bcnc.two.domain;
 
 
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
-package com.bcnc.two.controller.helper;
+package com.bcnc.two.application.rest.controller.helper;
 
-import com.bcnc.two.entities.Prices;
+import com.bcnc.two.domain.Prices;
 import lombok.Getter;
 import lombok.Setter;
 

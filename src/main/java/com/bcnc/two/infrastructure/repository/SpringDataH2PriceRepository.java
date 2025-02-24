@@ -16,10 +16,9 @@ public interface SpringDataH2PriceRepository extends JpaRepository<Prices, Long>
             Join<Prices, Brand> brandJoin = prices.join("brand", JoinType.INNER);
             CriteriaBuilder criteriaBuilder = cb;
 
-
             Subquery<Integer> subquery = cq.subquery(Integer.class);
             Root<Prices> subFrom = subquery.from(Prices.class);
-            Join<Prices, Brand> pricesBrandJoin = subFrom.join("brand", JoinType.INNER);
+            Join<Prices, Brand> pricesBrandJoin = subFrom.join("brand", JoinType.LEFT);
             subquery.select(criteriaBuilder.max(subFrom.get("priority")).as(Integer.class));
             subquery.where(criteriaBuilder.and(criteriaBuilder.equal(pricesBrandJoin.get("brandId"), brandId),
                     criteriaBuilder.lessThanOrEqualTo(subFrom.get("startDate"), date),

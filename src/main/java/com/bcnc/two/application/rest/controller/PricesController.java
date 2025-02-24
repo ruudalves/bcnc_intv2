@@ -1,21 +1,18 @@
 package com.bcnc.two.application.rest.controller;
 
-import com.bcnc.two.application.rest.controller.helper.PriceCheckerDto;
 import com.bcnc.two.application.rest.request.GetPriceRequest;
 import com.bcnc.two.application.rest.response.GetPriceResponse;
 import com.bcnc.two.domain.Prices;
-import com.bcnc.two.application.rest.controller.helper.PriceDto;
 import com.bcnc.two.domain.service.PricesService;
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController("/v1/price")
+@RestController
+@RequestMapping("/v1/prices")
 public class PricesController {
 
     private final PricesService pricesService;
@@ -25,6 +22,11 @@ public class PricesController {
         this.pricesService=pricesService;
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Request Created"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
+    @PutMapping
     @GetMapping
     public GetPriceResponse getPrice(@RequestBody GetPriceRequest getPriceRequest){
         Optional<Prices> price =

@@ -26,6 +26,10 @@ class TwoApplicationTests {
 	@Autowired
 	private PricesController pricesController;
 
+    TwoApplicationTests(PricesController pricesController) {
+        this.pricesController = pricesController;
+    }
+
     private GetPriceRequest setUp(String date){
 		PriceCheckerDto priceCheckerDto = new PriceCheckerDto();
 		priceCheckerDto.setBrandId(1);

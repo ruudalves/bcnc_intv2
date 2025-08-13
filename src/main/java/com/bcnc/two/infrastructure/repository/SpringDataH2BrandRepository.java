@@ -1,6 +1,6 @@
 package com.bcnc.two.infrastructure.repository;
 
-import com.bcnc.two.domain.Brand;
+import com.bcnc.two.domain.entity.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

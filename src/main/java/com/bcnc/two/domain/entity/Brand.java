@@ -1,4 +1,4 @@
-package com.bcnc.two.domain;
+package com.bcnc.two.domain.entity;
 
 
 import jakarta.persistence.*;
@@ -23,5 +23,5 @@ public class Brand {
     @Column(name = "BRAND_NAME")
     private String brandName;
     @OneToMany(mappedBy = "brand")
-    private Set<Prices> price;
+    private Set<Price> prices;
 }

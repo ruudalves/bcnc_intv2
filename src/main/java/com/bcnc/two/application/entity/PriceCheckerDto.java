@@ -1,4 +1,4 @@
-package com.bcnc.two.application.rest.controller.helper;
+package com.bcnc.two.application.entity;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

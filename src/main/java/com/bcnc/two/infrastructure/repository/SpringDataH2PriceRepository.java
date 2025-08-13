@@ -1,7 +1,7 @@
 package com.bcnc.two.infrastructure.repository;
 
-import com.bcnc.two.domain.Brand;
-import com.bcnc.two.domain.Prices;
+import com.bcnc.two.domain.entity.Brand;
+import com.bcnc.two.domain.entity.Price;
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,16 +9,16 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.time.LocalDateTime;
 
-public interface SpringDataH2PriceRepository extends JpaRepository<Prices, Long>, JpaSpecificationExecutor<Prices> {
+public interface SpringDataH2PriceRepository extends JpaRepository<Price, Long>, JpaSpecificationExecutor<Price> {
 
-    static Specification<Prices> findByDateRangeAndBrandAndProduct(LocalDateTime date, int productId, int brandId) {
+    static Specification<Price> findByDateRangeAndBrandAndProduct(LocalDateTime date, int productId, int brandId) {
         return (prices, cq, cb) -> {
-            Join<Prices, Brand> brandJoin = prices.join("brand", JoinType.INNER);
+            Join<Price, Brand> brandJoin = prices.join("brand", JoinType.INNER);
             CriteriaBuilder criteriaBuilder = cb;
 
             Subquery<Integer> subquery = cq.subquery(Integer.class);
-            Root<Prices> subFrom = subquery.from(Prices.class);
-            Join<Prices, Brand> pricesBrandJoin = subFrom.join("brand", JoinType.LEFT);
+            Root<Price> subFrom = subquery.from(Price.class);
+            Join<Price, Brand> pricesBrandJoin = subFrom.join("brand", JoinType.LEFT);
             subquery.select(criteriaBuilder.max(subFrom.get("priority")).as(Integer.class));
             subquery.where(criteriaBuilder.and(criteriaBuilder.equal(pricesBrandJoin.get("brandId"), brandId),
                     criteriaBuilder.lessThanOrEqualTo(subFrom.get("startDate"), date),

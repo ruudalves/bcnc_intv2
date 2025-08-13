@@ -1,6 +1,6 @@
-package com.bcnc.two.domain.repository;
+package com.bcnc.two.domain.out.repository;
 
-import com.bcnc.two.domain.Brand;
+import com.bcnc.two.domain.entity.Brand;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

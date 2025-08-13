@@ -1,6 +1,5 @@
 package com.bcnc.two.application.rest.request;
-import com.bcnc.two.application.rest.controller.helper.PriceCheckerDto;
-import com.fasterxml.jackson.annotation.JsonGetter;
+import com.bcnc.two.application.entity.PriceCheckerDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 public class GetPriceRequest {

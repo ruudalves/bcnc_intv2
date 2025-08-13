@@ -1,17 +1,19 @@
-package com.bcnc.two.domain;
+package com.bcnc.two.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Builder
 @Getter
 @Setter
 @Entity
-@Table(name="prices")
-public class Prices implements Serializable {
+@Table(name="price")
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class Price implements Serializable {
 
     @Id
     @Column(name = "ID")

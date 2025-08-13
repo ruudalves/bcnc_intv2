@@ -1,7 +1,7 @@
 package com.bcnc.two.infrastructure.repository;
 
-import com.bcnc.two.domain.Brand;
-import com.bcnc.two.domain.repository.BrandRepository;
+import com.bcnc.two.domain.entity.Brand;
+import com.bcnc.two.domain.out.repository.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;

@@ -31,9 +31,9 @@ public class PriceController {
     @GetMapping
     public GetPriceResponse getPrice(@RequestBody GetPriceRequest getPriceRequest){
         Optional<Price> price =
-                pricesQuery.findByDateAndProductIdAndBrandId(new SearchPricesByDateRangeAndProductAndBrandParams(getPriceRequest.getPriceCheckerDto().getDate(),
-                        getPriceRequest.getPriceCheckerDto().getProductId(),
-                        getPriceRequest.getPriceCheckerDto().getBrandId()));
+                pricesQuery.findByDateAndProductIdAndBrandId(new SearchPricesByDateRangeAndProductAndBrandParams(getPriceRequest.priceCheckerDto().getDate(),
+                        getPriceRequest.priceCheckerDto().getProductId(),
+                        getPriceRequest.priceCheckerDto().getBrandId()));
         return new GetPriceResponse(price);
     }
 

@@ -5,7 +5,6 @@ import com.bcnc.two.application.rest.response.GetPriceResponse;
 import com.bcnc.two.domain.entity.Price;
 import com.bcnc.two.domain.in.query.PricesQuery;
 import com.bcnc.two.domain.in.query.params.SearchPricesByDateRangeAndProductAndBrandParams;
-import com.bcnc.two.domain.shared.PriceMapper;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,10 @@ import java.util.Optional;
 public class PriceController {
 
     private final PricesQuery pricesQuery;
-    private final PriceMapper mapper;
 
     @Autowired
-    public PriceController(PricesQuery pricesQuery, PriceMapper mapper){
+    public PriceController(PricesQuery pricesQuery){
         this.pricesQuery=pricesQuery;
-        this.mapper = mapper;
     }
 
     @ApiResponses(value = {
@@ -37,7 +34,7 @@ public class PriceController {
                 pricesQuery.findByDateAndProductIdAndBrandId(new SearchPricesByDateRangeAndProductAndBrandParams(getPriceRequest.getPriceCheckerDto().getDate(),
                         getPriceRequest.getPriceCheckerDto().getProductId(),
                         getPriceRequest.getPriceCheckerDto().getBrandId()));
-        return new GetPriceResponse(price, mapper);
+        return new GetPriceResponse(price);
     }
 
 }

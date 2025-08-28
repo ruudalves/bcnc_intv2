@@ -14,12 +14,8 @@ public class GetPriceResponse {
 
     private final ResponseEntity<PriceDto> priceDtoResponseEntity;
 
-    private final PriceMapper mapper;
-
-    public GetPriceResponse(final Optional<Price> optionalPrice, PriceMapper mapper){
-        this.mapper=mapper;
-        PriceDto priceDto = new PriceDto();
-        priceDtoResponseEntity = optionalPrice.map(prices -> new ResponseEntity<>(mapper.INSTANCE.toPriceDto(optionalPrice.get()), HttpStatus.OK))
+    public GetPriceResponse(final Optional<Price> optionalPrice){
+        priceDtoResponseEntity = optionalPrice.map(prices -> new ResponseEntity<>(PriceMapper.INSTANCE.toPriceDto(optionalPrice.get()), HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
